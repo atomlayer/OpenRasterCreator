@@ -8,11 +8,11 @@ using System.Xml.Linq;
 
 namespace OpenRasterCreator
 {
-    abstract class OpenRasterNode
+    public abstract class OpenRasterNode
     {
         public abstract XElement ToXml();
 
-        public abstract List<Layer> GetLayers();
+        public abstract List<OpenRasterNode> GetNodes();
 
     }
 }

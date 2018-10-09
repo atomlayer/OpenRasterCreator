@@ -12,12 +12,12 @@ using System.Xml.Linq;
 
 namespace OpenRasterCreator
 {
-    class Openraster :OpenRasterNodeParent
+    public class Openraster :OpenRasterNodeParent
     {
 
         public void BuildFile()
         {
-            using (FileStream zipToOpen = new FileStream(@"output.zip", FileMode.Create))
+            using (FileStream zipToOpen = new FileStream(@"output.ora", FileMode.Create))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
                 {
@@ -99,14 +99,11 @@ namespace OpenRasterCreator
             return xmlElement;
         }
 
-        public override List<Layer> GetLayers()
-        {
-            List<Layer> layers =new List<Layer>();
-            foreach (var openRasterNode in nodes)
-            {
-                layers.AddRange(openRasterNode.GetLayers());
-            }
+   
 
+        public  List<Layer> GetLayers()
+        {
+            List<Layer> layers = GetNodes().OfType<Layer>().ToList();
             return layers;
         }
 

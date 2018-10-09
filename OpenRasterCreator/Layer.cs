@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace OpenRasterCreator
 {
-    class Layer:OpenRasterNode
+    public class Layer:OpenRasterNode
     {
         public Bitmap Bitmap;
         public string LayerName;
@@ -33,9 +33,9 @@ namespace OpenRasterCreator
             return xmlElement;
         }
 
-        public override List<Layer> GetLayers()
+        public override List<OpenRasterNode> GetNodes()
         {
-            return new List<Layer>(){this};
+            return new List<OpenRasterNode>(){this};
         }
     }
 }

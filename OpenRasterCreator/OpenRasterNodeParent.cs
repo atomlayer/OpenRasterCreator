@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenRasterCreator
 {
-    abstract class OpenRasterNodeParent :OpenRasterNode
+    public abstract class OpenRasterNodeParent :OpenRasterNode
     {
         public List<OpenRasterNode> nodes = new List<OpenRasterNode>();
 
@@ -19,6 +19,14 @@ namespace OpenRasterCreator
         {
             nodes.Insert(0, openRasterNode);
 
+        }
+
+        public override List<OpenRasterNode> GetNodes()
+        {
+            var allNodes = new List<OpenRasterNode>();
+            allNodes = nodes.SelectMany(n => n.GetNodes()).ToList();
+            allNodes.AddRange(nodes);
+            return allNodes;
         }
     }
 }

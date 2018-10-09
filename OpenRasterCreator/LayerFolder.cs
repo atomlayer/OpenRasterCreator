@@ -10,16 +10,11 @@ using System.IO.Compression;
 
 namespace OpenRasterCreator
 {
-    class LayerFolder:OpenRasterNodeParent
+    public class LayerFolder:OpenRasterNodeParent
     {
         public string FolderName;
 
         public LayerFolder(string folderName)
-        {
-            FolderName = folderName;
-        }
-
-        public void AddFolder(string folderName)
         {
             FolderName = folderName;
         }
@@ -37,9 +32,7 @@ namespace OpenRasterCreator
             return xmlElement;
         }
 
-        public override List<Layer> GetLayers()
-        {
-            return nodes.OfType<Layer>().ToList();
-        }
+
+        
     }
 }
