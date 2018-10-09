@@ -14,8 +14,6 @@ namespace OpenRasterCreator
 {
     class Openraster :OpenRasterNodeParent
     {
-        public static int CountOfLayers { get; }
-
 
         public void BuildFile()
         {
@@ -47,8 +45,6 @@ namespace OpenRasterCreator
             }
         }
 
-      
-
         public static void WriteImage(ZipArchive archive, Bitmap bitmap, string entryName)
         {
             ZipArchiveEntry readmeEntry = archive.CreateEntry(entryName);
@@ -63,7 +59,6 @@ namespace OpenRasterCreator
             }
         }
 
- 
         private static void SetLayerIds(List<Layer> layers)
         {
             for (int i = 0; i < layers.Count; i++)
@@ -84,18 +79,15 @@ namespace OpenRasterCreator
         private void WriteStackXML(ZipArchive archive)
         {
             ZipArchiveEntry readmeEntry = archive.CreateEntry(@"stack.xml");
-            string xml = ToXml().ToString().Replace($"<?xml version=\"1.0\" encoding=\"utf - 8\"?>", "");
-
             using (StreamWriter writer = new StreamWriter(readmeEntry.Open()))
             {
-                writer.Write(xml);
+                writer.Write(ToXml());
             }
         }
 
         public override XElement ToXml()
         {
-            var root = new LayerFolder("root");
-            root.nodes = nodes;
+            var root = new LayerFolder("root") {nodes = nodes};
 
             XElement xmlElement = new XElement("image",
                 new XAttribute("w", Wigth),
