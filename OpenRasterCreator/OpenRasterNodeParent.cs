@@ -10,16 +10,17 @@ namespace OpenRasterCreator
     {
         public List<OpenRasterNode> nodes = new List<OpenRasterNode>();
 
-        public void AddNodeToEndPosition(OpenRasterNode openRasterNode)
+        public void AddNodeToEndPos(params OpenRasterNode[] openRasterNodes)
         {
-            nodes.Add(openRasterNode);
+            nodes.AddRange(openRasterNodes);
         }
 
-        public void AddNodeToFirstPosition(OpenRasterNode openRasterNode)
+        public void AddNodeToFirstPos(params OpenRasterNode[] openRasterNodes)
         {
-            nodes.Insert(0, openRasterNode);
-
+            nodes = openRasterNodes.Concat(nodes).ToList();
         }
+
+
 
         public override List<OpenRasterNode> GetNodes()
         {

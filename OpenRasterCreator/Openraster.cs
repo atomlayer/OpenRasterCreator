@@ -15,9 +15,14 @@ namespace OpenRasterCreator
     public class Openraster :OpenRasterNodeParent
     {
 
-        public void BuildFile()
+        public Openraster(params OpenRasterNode[] nodes)
         {
-            using (FileStream zipToOpen = new FileStream(@"output.ora", FileMode.Create))
+            this.nodes = nodes.ToList();
+        }
+
+        public void Save(string fileName)
+        {
+            using (FileStream zipToOpen = new FileStream(fileName, FileMode.Create))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
                 {

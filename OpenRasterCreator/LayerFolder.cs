@@ -19,6 +19,12 @@ namespace OpenRasterCreator
             FolderName = folderName;
         }
 
+        public LayerFolder(string folderName, params OpenRasterNode[] nodes)
+        {
+            FolderName = folderName;
+            this.nodes = nodes.ToList();
+        }
+
         public override XElement ToXml()
         {
             XElement xmlElement =new XElement("stack", 

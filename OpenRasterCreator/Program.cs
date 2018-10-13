@@ -11,40 +11,49 @@ namespace OpenRasterCreator
     {
         static void Main(string[] args)
         {
-            Openraster openraster = new Openraster();
-
-            var rendring = new LayerFolder("rendering");
-
-
+            //Test data
             List<Bitmap> list = new List<Bitmap>();
-            list.Add(new Bitmap("layer0.png"));
-            list.Add(new Bitmap("layer1.png"));
-            list.Add(new Bitmap("layer2.png"));
+            list.Add(new Bitmap("img0.png"));
+            list.Add(new Bitmap("img1.png"));
+            list.Add(new Bitmap("img2.png"));
+
+            var openRaster = new Openraster(
+                                 new LayerFolder("testFolder",
+                                     new Layer(list[1],"test1"),
+                                     new Layer(list[2], "test2"),
+                                     new LayerFolder("testFolder2",
+                                         new Layer(list[0], "test1"))),
+                                 new Layer(list[0], "test1")   
+                                 );
+        
+            openRaster.Save(@"output.ora");
+
+            
 
 
-            Console.WriteLine("\nSave combime input layers");
 
-            for (int i = 0; i < 2; i++)
+
+            /*for (int i = 0; i < 2; i++)
             {
                 var groupFolder = new LayerFolder("testGroup");
 
                 
                     var lineFolder = new LayerFolder("line");
-                    lineFolder.AddNodeToEndPosition(new Layer(list[2], "line"));
-                    groupFolder.AddNodeToEndPosition(lineFolder);
+                    lineFolder.AddNodeToEndPos(new Layer(list[2], "line"));
+                    groupFolder.AddNodeToEndPos(lineFolder);
 
               
-                    groupFolder.AddNodeToEndPosition(new Layer(list[2], "shadow"));
+                    groupFolder.AddNodeToEndPos(new Layer(list[2], "shadow"));
                    
              
-                    groupFolder.AddNodeToEndPosition(new Layer(list[2], "base"));
+                    groupFolder.AddNodeToEndPos(new Layer(list[2], "base"));
               
                 
-                rendring.AddNodeToEndPosition(groupFolder);
+                rendring.AddNodeToEndPos(groupFolder);
 
             }
 
-            openraster.AddNodeToEndPosition(rendring);
+            openraster.AddNodeToEndPos(rendring);
             openraster.BuildFile();
 
 
@@ -56,13 +65,13 @@ namespace OpenRasterCreator
 
             Openraster openraster =new Openraster();
 
-            openraster.AddNodeToEndPosition(new OpenRasterNode(list[0],"first"));
+            openraster.AddNodeToEndPos(new OpenRasterNode(list[0],"first"));
 
             var folder = new LayerFolder("FolderTest");
-            folder.AddNodeToEndPosition(new OpenRasterNode(list[1], "second"));
-            folder.AddNodeToEndPosition(new OpenRasterNode(list[2], "third"));
+            folder.AddNodeToEndPos(new OpenRasterNode(list[1], "second"));
+            folder.AddNodeToEndPos(new OpenRasterNode(list[2], "third"));
 
-            openraster.AddNodeToEndPosition(folder);
+            openraster.AddNodeToEndPos(folder);
 
             openraster.BuildFile();*/
         }
