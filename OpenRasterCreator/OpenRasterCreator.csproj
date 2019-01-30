@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>OpenRasterCreator</RootNamespace>
     <AssemblyName>OpenRasterCreator</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Layer.cs" />
     <Compile Include="LayerFolder.cs" />
+    <Compile Include="NodeParametrs.cs" />
     <Compile Include="OpenRasterNodeParent.cs" />
     <Compile Include="Openraster.cs" />
     <Compile Include="OpenRasterNode.cs" />
