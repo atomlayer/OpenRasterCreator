@@ -24,7 +24,7 @@ Usage example
 
 Result
 
-![result](Example_result.png)
+![result](Example__result.png)
 
 
 
